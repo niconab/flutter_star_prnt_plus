@@ -5,7 +5,7 @@ buildscript {
     ext.kotlin_version = '1.7.21'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -17,7 +17,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -25,7 +25,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 34
+    namespace 'io.eddayy.flutter_star_prnt'
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -36,6 +37,19 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 }
 
